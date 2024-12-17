@@ -213,8 +213,8 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
 
   const handleNavigationStateChange = navState => {
     const {url} = navState;
-    //console.log('NavigationStateUrl: ', url);
-    //console.log('NavigationState: ', navState);
+    console.log('NavigationState: ', navState);
+    //console.log('navState: ', navState);
     if (
       url.includes(
         'https://api.paymentiq.io/paymentiq/api/piq-redirect-assistance',
@@ -257,7 +257,7 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
 
   const onShouldStartLoadWithRequest = event => {
     const {url} = event;
-    //console.log('onShouldStartLoadWithRequest========> ', event);
+    console.log('onShouldStartLoadWithRequest========> ', event);
 
     if (url.startsWith('mailto:')) {
       Linking.openURL(url);
@@ -281,7 +281,8 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
       url.startsWith('https://twitter.com/') ||
       url.startsWith('https://www.whatsapp.com/') ||
       url.startsWith('https://t.me/') ||
-      url.includes('https://web.telegram')
+      url.includes('https://web.telegram') //||
+      //url.includes('https://gate.mrbl.cc/payments/process/')
     ) {
       Linking.openURL(url);
       return false; // && checkNineUrl === product
@@ -405,9 +406,9 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
           bottom: 0,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: '#9a53ff', // затемнення
+          backgroundColor: '#191d24', // затемнення
         }}>
-        <ActivityIndicator size="large" color="#faefed" />
+        <ActivityIndicator size="large" color="#fbb802" />
       </View>
     );
   };
@@ -432,13 +433,13 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
         source={{
           uri: product,
         }}
-        onOpenWindow={syntheticEvent => {
-          const {nativeEvent} = syntheticEvent;
-          const {targetUrl} = nativeEvent;
-          //console.log('syntheticEvent==>', syntheticEvent);
-          console.log('nativeEvent', nativeEvent);
-          console.log('targetUrl', targetUrl);
-        }}
+        //onOpenWindow={syntheticEvent => {
+        //  const {nativeEvent} = syntheticEvent;
+        //  const {targetUrl} = nativeEvent;
+        //  //console.log('syntheticEvent==>', syntheticEvent);
+        //  console.log('nativeEvent', nativeEvent);
+        //  console.log('targetUrl', targetUrl);
+        //}}
         onError={syntheticEvent => {
           const {nativeEvent} = syntheticEvent;
           //console.warn('WebView error: ', nativeEvent.code);
