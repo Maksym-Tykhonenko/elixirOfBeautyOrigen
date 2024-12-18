@@ -408,7 +408,7 @@ const App = () => {
     const checkUrl = `${INITIAL_URL}${URL_IDENTIFAIRE}`;
     //console.log(checkUrl);
 
-    const targetData = new Date('2024-12-20T10:00:00'); //дата з якої поч працювати webView
+    const targetData = new Date('2024-12-21T10:00:00'); //дата з якої поч працювати webView
     const currentData = new Date(); //текущая дата
 
     if (!route) {
@@ -524,7 +524,7 @@ const App = () => {
                 useNativeDriver: true,
             }).start();
             //setLouderIsEnded(true);
-        }, 2000);
+        }, 500);
     }, []);
 
     useEffect(() => {
